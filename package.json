@@ -1,0 +1,8 @@
+{
+  "name": "budget",
+  "private": true,
+  "description": "Семейный бюджет: виджет, веб-приложение и бэкенд на Google Apps Script",
+  "scripts": {
+    "test": "node tests/backend/run.js && node tests/backend/flow.js"
+  }
+}
