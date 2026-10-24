@@ -31,14 +31,13 @@ function setup() {
   console.log('Код доступа (сохраните, он нужен телефонам):\n' + prop_('TOKEN'));
 }
 
-/** Ищет вашу папку «Бюджет» (владелец — вы, внутри есть папки годов). */
+/** Ищет папку «Бюджет» с папками годов внутри (владельцем может быть и другой член семьи). */
 function findRootFolder_() {
-  const me = Session.getEffectiveUser().getEmail();
   const found = [];
   const it = DriveApp.getFoldersByName(CFG.ROOT_FOLDER_NAME);
   while (it.hasNext()) {
     const f = it.next();
-    if (f.isTrashed() || f.getOwner().getEmail() !== me) continue;
+    if (f.isTrashed()) continue;
     const sub = f.getFolders();
     let years = 0;
     while (sub.hasNext()) if (/^\d{4}$/.test(sub.next().getName().trim())) years++;
