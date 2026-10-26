@@ -3,6 +3,10 @@
   "private": true,
   "description": "Семейный бюджет: виджет, веб-приложение и бэкенд на Google Apps Script",
   "scripts": {
-    "test": "node tests/backend/run.js && node tests/backend/flow.js"
+    "test": "node tests/backend/run.js && node tests/backend/flow.js",
+    "test:app": "node tests/app/e2e.js"
+  },
+  "devDependencies": {
+    "playwright": "1.47.2"
   }
 }
