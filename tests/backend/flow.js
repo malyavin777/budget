@@ -67,7 +67,8 @@ function monthBook(id, name, monthSheet) {
   exp.forEach(([n, p], i) => { sum.cells[26 + i][1] = n; sum.cells[26 + i][3] = p; sum.cells[26 + i][4] = 0; });
   sum.cells[28][7] = 'Клиенты психология'; sum.cells[28][9] = 100000; sum.cells[28][10] = 5000;
   sum.cells[29][7] = 'Продажа '; sum.cells[29][9] = 5000;
-  sum.cells[50][7] = 'Вклад'; // блок инвестиций — не статья дохода
+  sum.cells[31][7] = 'Инвестиции'; // в старых файлах блок инвестиций выше 49-й строки
+  sum.cells[33][7] = 'Вклад'; sum.cells[33][10] = 50000;
   return new Book(id, name, [ops, sum]);
 }
 

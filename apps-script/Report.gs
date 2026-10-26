@@ -11,11 +11,13 @@ function readSummary_(ss) {
   const I = CFG.SUM_IDX;
   const expense = [];
   const income = [];
+  let incomeDone = false;
   rows.forEach(function (r, i) {
     const en = String(r[I.expName]);
     if (isCategoryName_(en)) expense.push({ name: en, plan: num_(r[I.expPlan]), fact: num_(r[I.expFact]) });
     const inn = String(r[I.incName]);
-    if (first + i <= CFG.INCOME_LAST_ROW && isCategoryName_(inn)) {
+    if (inn.trim() === CFG.INVEST_HEADER) incomeDone = true;
+    if (!incomeDone && first + i <= CFG.INCOME_LAST_ROW && isCategoryName_(inn)) {
       income.push({ name: inn, plan: num_(r[I.incPlan]), fact: num_(r[I.incFact]) });
     }
   });

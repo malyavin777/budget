@@ -20,7 +20,9 @@ function readCategories_(ss) {
   };
   const expense = n ? pick(sh.getRange(first, 2, n, 1).getValues()) : [];
   const incN = CFG.INCOME_LAST_ROW - first + 1;
-  const income = pick(sh.getRange(first, 8, incN, 1).getValues());
+  const incVals = sh.getRange(first, 8, incN, 1).getValues();
+  const stop = incVals.findIndex(function (r) { return String(r[0]).trim() === CFG.INVEST_HEADER; });
+  const income = pick(stop >= 0 ? incVals.slice(0, stop) : incVals);
   return { expense: expense, income: income };
 }
 

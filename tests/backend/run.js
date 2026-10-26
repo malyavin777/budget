@@ -77,6 +77,7 @@ console.log('Группы');
 test('Питание → Еда', () => assert.strictEqual(T.defaultGroupOf_('Питание'), 'Еда'));
 test('Продукты → Еда', () => assert.strictEqual(T.defaultGroupOf_('Продукты'), 'Еда'));
 test('длинное имя с пробелом', () => assert.strictEqual(T.defaultGroupOf_('Здоровье (Прием врача, диагностика,  анализы) '), 'Здоровье и забота'));
+test('Ремонт → Разовые', () => assert.strictEqual(T.defaultGroupOf_('Ремонт'), 'Разовые'));
 test('неизвестная → пусто', () => assert.strictEqual(T.defaultGroupOf_('Новая статья'), ''));
 test('нет пересечений групп', () => {
   const seen = {};

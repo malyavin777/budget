@@ -27,7 +27,8 @@ const CFG = {
   SUMMARY_TOTAL_ROW: 26,
   // индексы колонок внутри строки, прочитанной с колонки A (A = 0)
   SUM_IDX: { expName: 1, expPlan: 3, expFact: 4, incName: 7, incPlan: 9, incFact: 10 },
-  INCOME_LAST_ROW: 48, // с 49-й строки — блок «Инвестиции»
+  INCOME_LAST_ROW: 48, // с 49-й строки — блок «Инвестиции» (в старых файлах он выше)
+  INVEST_HEADER: 'Инвестиции', // доходы заканчиваются на этом заголовке
 
   MAX_AMOUNT: 10000000,
   MAX_COMMENT: 200,
