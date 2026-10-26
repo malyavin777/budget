@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Кнопка «add»: тёмная основа + радиальное свечение сверху справа -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FF1C100D" />
+            <corners android:radius="22dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="22dp" />
+            <gradient
+                android:type="radial"
+                android:centerX="0.68"
+                android:centerY="0.12"
+                android:gradientRadius="160dp"
+                android:startColor="#FFFFB25B"
+                android:centerColor="#FFFF6A4D"
+                android:endColor="#00FF6A4D" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="22dp" />
+            <stroke android:width="1dp" android:color="#24FFFFFF" />
+        </shape>
+    </item>
+</layer-list>

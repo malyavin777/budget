@@ -7,6 +7,6 @@
 | `apps-script/` | Бэкенд на Google Apps Script: запись операций, автосоздание файла месяца, отчёт и прогноз | готов, [установка](apps-script/README.md) |
 | `tests/` | Тесты логики бэкенда (`npm test`) | 64 проверки |
 | `index.html`, `app/`, `sw.js` | Веб-приложение «Внести / Отчёт»: https://malyavin777.github.io/budget/ | готово |
-| `widgets/` | Виджеты: Scriptable (iOS) и KWGT (Android) | в работе |
+| `widgets/` | Виджеты: Scriptable (iPhone) и мини-приложение (Android, собирается в Actions). Установка: https://malyavin777.github.io/budget/widgets/ | готово |
 
 В репозитории нет данных бюджета, адреса веб-приложения и кода доступа — они хранятся только в Google и на телефонах.

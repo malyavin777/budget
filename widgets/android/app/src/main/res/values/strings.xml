@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Бюджет</string>
+    <string name="widget_name">Бюджет: внести и отчёт</string>
+    <string name="widget_desc">Внести расход или доход и открыть отчёт</string>
+    <string name="add">Внести</string>
+    <string name="add_sub">расход · доход</string>
+    <string name="add_desc">Внести расход или доход</string>
+    <string name="report">Отчёт</string>
+    <string name="report_sub">план и факт</string>
+    <string name="report_desc">Открыть отчёт за месяц</string>
+    <string name="no_browser">Не найден браузер, чтобы открыть приложение</string>
+</resources>

@@ -1,0 +1,64 @@
+name: Android widget
+
+# Собирает виджет для Android и выкладывает APK в релиз «widget-android»:
+# https://github.com/malyavin777/budget/releases/download/widget-android/budget-widget.apk
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'widgets/android/**'
+      - '.github/workflows/android-widget.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-widget
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: widgets/android
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.10.2'
+
+      - name: Build APK
+        shell: bash
+        run: |
+          set -o pipefail
+          gradle --no-daemon assembleDebug 2>&1 | tee build.log
+          cp app/build/outputs/apk/debug/app-debug.apk budget-widget.apk
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh release delete widget-android --yes --cleanup-tag || true
+          gh release create widget-android budget-widget.apk \
+            --title "Виджет для Android" \
+            --notes "Сборка ${GITHUB_SHA::7}. Установка: https://malyavin777.github.io/budget/widgets/"
+          gh release delete ci-log --yes --cleanup-tag || true
+
+      - name: Publish build log on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh release delete ci-log --yes --cleanup-tag || true
+          { echo '```'; tail -c 100000 build.log 2>/dev/null || echo 'no build.log'; echo '```'; } > log.md
+          gh release create ci-log --prerelease --title "CI log" --notes-file log.md
